@@ -41,16 +41,16 @@ install(
 ament_python_install_package(${PROJECT_NAME})
 
 # Install Python executables
-install(PROGRAMS
-  scripts/euler_to_quaternion.py
-  scripts/lift_controller.py
-  scripts/matrix.py
-  scripts/nav_to_pose.py
-  scripts/nav_through_poses.py
-  scripts/robot_navigator.py
-  scripts/to_goal.py
-  DESTINATION lib/${PROJECT_NAME}
-)
+#install(PROGRAMS
+#  scripts/euler_to_quaternion.py
+  #scripts/lift_controller.py
+  #scripts/matrix.py
+  #scripts/nav_to_pose.py
+  #scripts/nav_through_poses.py
+  #scripts/robot_navigator.py
+  #scripts/to_goal.py
+ # DESTINATION lib/${PROJECT_NAME}
+#)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
