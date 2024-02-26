@@ -1,0 +1,630 @@
+<?xml version="1.0" ?>
+<sdf version='1.5'>
+  <model name='iron_x'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0.013921 -0.000261 0.009273 0 -0 0</pose>
+        <mass>1.2847</mass>
+        <inertia>
+          <ixx>0.00126366</ixx>
+          <ixy>-2.27727e-07</ixy>
+          <ixz>-0.000401649</ixz>
+          <iyy>0.00239333</iyy>
+          <iyz>2.15264e-06</iyz>
+          <izz>0.00196121</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+            <torsional>
+              <ode/>
+            </torsional>
+          </friction>
+          <bounce/>
+        </surface>
+        <max_contacts>10</max_contacts>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__camera_link_collision_1'>
+        <pose>0.125 -0.000243 0.054467 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/Realsense_link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+            <torsional>
+              <ode/>
+            </torsional>
+          </friction>
+          <bounce/>
+        </surface>
+        <max_contacts>10</max_contacts>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__imu_link_collision_2'>
+        <pose>0 0 0.005 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.03 0.03 0.01</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+            <torsional>
+              <ode/>
+            </torsional>
+          </friction>
+          <bounce/>
+        </surface>
+        <max_contacts>10</max_contacts>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__lidar_link_collision_3'>
+        <pose>0.037442 -0.001464 0.079918 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/RPLidar_link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+            <torsional>
+              <ode/>
+            </torsional>
+          </friction>
+          <bounce/>
+        </surface>
+        <max_contacts>10</max_contacts>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__camera_link_visual_1'>
+        <pose>0.125 -0.000243 0.054467 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/Realsense_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__imu_link_visual_2'>
+        <pose>0 0 0.005 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.03 0.03 0.01</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__lidar_link_visual_3'>
+        <pose>0.037442 -0.001464 0.079918 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/RPLidar_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Gray</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <sensor name='depth_camera' type='depth'>
+        <visualize>1</visualize>
+        <update_rate>30</update_rate>
+        <camera name='camera'>
+          <horizontal_fov>1.0472</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.05</near>
+            <far>3</far>
+          </clip>
+        </camera>
+        <plugin name='depth_camera_controller' filename='libgazebo_ros_camera.so'>
+          <baseline>0.2</baseline>
+          <alwaysOn>1</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <frame_name>camera_depth_frame</frame_name>
+          <pointCloudCutoff>0.5</pointCloudCutoff>
+          <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+          <distortionK1>0</distortionK1>
+          <distortionK2>0</distortionK2>
+          <distortionK3>0</distortionK3>
+          <distortionT1>0</distortionT1>
+          <distortionT2>0</distortionT2>
+          <CxPrime>0</CxPrime>
+          <Cx>0</Cx>
+          <Cy>0</Cy>
+          <focalLength>0</focalLength>
+          <hackBaseline>0</hackBaseline>
+        </plugin>
+        <pose>0.125 -0.000243 0.054467 0 -0 0</pose>
+      </sensor>
+      <gravity>1</gravity>
+      <sensor name='twr_imu' type='imu'>
+        <always_on>1</always_on>
+        <update_rate>100</update_rate>
+        <visualize>1</visualize>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0002</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0002</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0002</stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.017</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.017</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.017</stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+          <orientation>
+            <x>
+              <noise type='gaussian'>
+                <mean>0.0</mean>
+                <stddev>2e-3</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type='gaussian'>
+                <mean>0.0</mean>
+                <stddev>2e-3</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type='gaussian'>
+                <mean>0.0</mean>
+                <stddev>2e-3</stddev>
+              </noise>
+            </z>
+          </orientation>
+        </imu>
+        <plugin name='robot_imu' filename='libgazebo_ros_imu_sensor.so'>
+          <initial_orientation_as_reference>0</initial_orientation_as_reference>
+          <frame_name>imu_link</frame_name>
+          <ros>
+            <namespace>/imu</namespace>
+            <remapping>~/out:=data</remapping>
+          </ros>
+        </plugin>
+        <pose>0 0 0.005 0 -0 0</pose>
+      </sensor>
+      <sensor name='lidar' type='ray'>
+        <always_on>1</always_on>
+        <visualize>1</visualize>
+        <update_rate>5</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>120</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>1</samples>
+              <min_angle>0</min_angle>
+              <max_angle>0</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.15</min>
+            <max>3.0</max>
+            <resolution>0.015</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name='scan' filename='libgazebo_ros_ray_sensor.so'>
+          <ros>
+            <remapping>~/out:=scan</remapping>
+          </ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>lidar_link</frame_name>
+        </plugin>
+        <pose>0.037442 -0.001464 0.079919 0 -0 0</pose>
+      </sensor>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+    </link>
+    <joint name='left_back_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.075 0.093002 -0.0165 -1.5708 0 0</pose>
+      <parent>base_link</parent>
+      <child>left_back_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <effort>10</effort>
+          <velocity>10</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_back_link'>
+      <pose relative_to='left_back_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.000212 0 -0 0</pose>
+        <mass>0.217951</mass>
+        <inertia>
+          <ixx>6.00999e-05</ixx>
+          <ixy>-1.35669e-10</ixy>
+          <ixz>2.20303e-11</ixz>
+          <iyy>6.01011e-05</iyy>
+          <iyz>-7.72858e-11</iyz>
+          <izz>6.86943e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_back_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/Left_back_main_link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+            <torsional>
+              <ode/>
+            </torsional>
+          </friction>
+          <bounce/>
+        </surface>
+        <max_contacts>10</max_contacts>
+      </collision>
+      <visual name='left_back_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/Left_back_main_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+    </link>
+    <joint name='left_front_joint' type='revolute'>
+      <pose relative_to='base_link'>0.075 0.093 -0.0165 -1.5708 0 0</pose>
+      <parent>base_link</parent>
+      <child>left_front_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <effort>10</effort>
+          <velocity>10</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_front_link'>
+      <pose relative_to='left_front_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 -0 3.5e-05 0 -0 0</pose>
+        <mass>0.218197</mass>
+        <inertia>
+          <ixx>6.03098e-05</ixx>
+          <ixy>5.46343e-11</ixy>
+          <ixz>2.12557e-11</ixz>
+          <iyy>6.03114e-05</iyy>
+          <iyz>6.32279e-11</iyz>
+          <izz>6.91135e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_front_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/Left_front_main_link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+            <torsional>
+              <ode/>
+            </torsional>
+          </friction>
+          <bounce/>
+        </surface>
+        <max_contacts>10</max_contacts>
+      </collision>
+      <visual name='left_front_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/Left_front_main_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+    </link>
+    <joint name='right_back_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.075 -0.093 -0.0165 1.5708 -0 0</pose>
+      <parent>base_link</parent>
+      <child>right_back_link</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <effort>10</effort>
+          <velocity>10</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_back_link'>
+      <pose relative_to='right_back_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0 0 -3.6e-05 0 -0 0</pose>
+        <mass>0.218197</mass>
+        <inertia>
+          <ixx>6.03096e-05</ixx>
+          <ixy>2.39953e-12</ixy>
+          <ixz>3.49641e-13</ixz>
+          <iyy>6.03114e-05</iyy>
+          <iyz>1.1846e-10</iyz>
+          <izz>6.91134e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_back_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/Right_back_main_link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+            <torsional>
+              <ode/>
+            </torsional>
+          </friction>
+          <bounce/>
+        </surface>
+        <max_contacts>10</max_contacts>
+      </collision>
+      <visual name='right_back_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/Right_back_main_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+    </link>
+    <joint name='right_front_joint' type='revolute'>
+      <pose relative_to='base_link'>0.075 -0.093002 -0.0165 1.5708 -0 0</pose>
+      <parent>base_link</parent>
+      <child>right_front_link</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <effort>10</effort>
+          <velocity>10</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_front_link'>
+      <pose relative_to='right_front_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 -0 -0.000212 0 -0 0</pose>
+        <mass>0.217951</mass>
+        <inertia>
+          <ixx>6.00996e-05</ixx>
+          <ixy>-7.83278e-11</ixy>
+          <ixz>-2.69816e-11</ixz>
+          <iyy>6.01009e-05</iyy>
+          <iyz>1.81168e-11</iyz>
+          <izz>6.86941e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_front_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/Right_front_main_link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+            <torsional>
+              <ode/>
+            </torsional>
+          </friction>
+          <bounce/>
+        </surface>
+        <max_contacts>10</max_contacts>
+      </collision>
+      <visual name='right_front_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://iron_x/meshes/Right_front_main_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+    </link>
+    <plugin name='gazebo_joint_state' filename='libgazebo_ros_joint_state_publisher.so'>
+      <update_rate>20</update_rate>
+      <joint_name>left_front_joint</joint_name>
+      <joint_name>right_front_joint</joint_name>
+      <joint_name>left_back_joint</joint_name>
+      <joint_name>right_back_joint</joint_name>
+    </plugin>
+    <static>0</static>
+    <plugin name='mecanum_control' filename='libgazebo_ros_planar_move.so'>
+      <command_topic>cmd_vel</command_topic>
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <odometry_rate>20.0</odometry_rate>
+      <robot_base_frame>base_link</robot_base_frame>
+      <publish_odom>1</publish_odom>
+      <publish_odom_tf>1</publish_odom_tf>
+    </plugin>
+    <pose>0 0 0.2 0 -0 0</pose>
+  </model>
+</sdf>
