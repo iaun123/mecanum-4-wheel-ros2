@@ -49,8 +49,7 @@ def generate_launch_description():
                                   "-x", spawn_x_val,
                                   "-y", spawn_y_val,
                                   "-z", spawn_z_val,
-                                  "-Y", spawn_yaw_val,
-                                ],
+                                  "-Y", spawn_yaw_val,],
                        output="screen",
     )   
     rviz_node = Node(
