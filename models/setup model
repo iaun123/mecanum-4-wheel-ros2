@@ -5,4 +5,5 @@ add modles in .gazebo
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH: add path models
 
 #solidwork
+IRON-X PRO TESR THESIS v.1
 
