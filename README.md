@@ -17,5 +17,6 @@ sudo apt install ros-foxy-nav2-brindup
 sudo apt install ros-foxy-joy
 
 #point clond
+sudo apt install ros-foxy-rtabmap*
 sudo apt install ros-foxy-pcl-ros
 sudo apt install pcl-tools
