@@ -1,5 +1,5 @@
 #set model on gazebo
-add modles in .gazebo
+add modles in folder .gazebo
 
 #set model in .bashrc
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH: add path models
