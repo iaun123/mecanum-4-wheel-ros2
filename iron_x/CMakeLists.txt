@@ -31,7 +31,7 @@ find_package(action_msgs REQUIRED)
 include_directories(include)
 
 install(
-  DIRECTORY config launch media meshes rviz urdf worlds
+  DIRECTORY config launch media meshes models rviz urdf worlds
   DESTINATION share/${PROJECT_NAME}
 )
 
