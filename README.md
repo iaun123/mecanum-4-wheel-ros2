@@ -9,6 +9,7 @@ add modles in folder .gazebo
 #iron_x pkg
 sudo apt install ros-foxy-joint-state-publisher-gui 
 sudo apt install ros-foxy-xacro
+sudo apt install ros-foxy-robot-localization
 sudo apt install ros-foxy-gazebo-ros-pkgs
 sudo apt install ros-foxy-slam-toolbox
 
