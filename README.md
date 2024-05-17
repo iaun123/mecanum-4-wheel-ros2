@@ -14,7 +14,7 @@ sudo apt install ros-foxy-slam-toolbox
 
 #nav2
 sudo apt install ros-foxy-navigation2
-sudo apt install ros-foxy-nav2-brindup
+sudo apt install ros-foxy-nav2-bringup
 
 #joy
 sudo apt install ros-foxy-joy
