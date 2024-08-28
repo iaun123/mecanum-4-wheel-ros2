@@ -1,7 +1,0 @@
-image: /home/iron_x/iron_x/src/nav2/maps/map/map.pgm
-mode: trinary
-resolution: 0.05
-origin: [-9.34, -5.54, 0]
-negate: 0
-occupied_thresh: 0.65
-free_thresh: 0.25
