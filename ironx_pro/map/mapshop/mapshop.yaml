@@ -1,0 +1,7 @@
+image: /home/iron_x/test/src/ironx_pro/map/mapshop/mapshop.pgm
+mode: trinary
+resolution: 0.05
+origin: [-4.26, -1.87, 0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.25
