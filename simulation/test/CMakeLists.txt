@@ -25,9 +25,7 @@ install(
 
 # Install Python executables
 install(PROGRAMS
-  scripts/check_pose.py
   scripts/euler_quaternion.py
-  scripts/imu_check.py
   scripts/move_angular.py
   scripts/move_linear.py
   scripts/move_pose.py
