@@ -36,7 +36,6 @@ install(
 
 # Install Python executables
 install(PROGRAMS
-  scripts/check_pose.py
   scripts/euler_quaternion.py
   scripts/nav2_point.py
   scripts/nav2_pose.py
