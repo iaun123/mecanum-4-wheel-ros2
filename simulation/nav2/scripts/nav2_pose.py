@@ -19,10 +19,10 @@ class Nav2move(Node):
         self.set_goal_pose()
 
         # Open CSV files in append mode and set up CSV writers
-        self.csv_file = open('a5_pose.csv', 'a', newline='')
-        self.csv_writer = csv.writer(self.csv_file)
+        # self.csv_file = open('a5_pose.csv', 'a', newline='')
+        # self.csv_writer = csv.writer(self.csv_file)
         
-        self.csv_writer.writerow(['current_x (m)', 'current_y (m)', 'current_yaw (deg)'])
+        # self.csv_writer.writerow(['current_x (m)', 'current_y (m)', 'current_yaw (deg)'])
 
         self.timer = self.create_timer(1.0, self.check_feedback) 
         self.start_time = self.navigator.get_clock().now()
@@ -78,7 +78,7 @@ class Nav2move(Node):
         current_yaw_degrees = (current_yaw_degrees + 360) % 360
 
         # Write the current pose to CSV file with three decimal places
-        self.csv_writer.writerow([f"{current_x:.3f}", f"{current_y:.3f}", f"{current_yaw_degrees:.3f}"])
+        # self.csv_writer.writerow([f"{current_x:.3f}", f"{current_y:.3f}", f"{current_yaw_degrees:.3f}"])
 
     def destroy_node(self):
         self.csv_file.close()
