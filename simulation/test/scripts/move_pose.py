@@ -31,12 +31,12 @@ class RotateRobot(Node):
         self.target_yaw = None
 
         # Open CSV file in append mode and set up CSV writer
-        self.csv_file = open('pose_log.csv', 'a', newline='')
-        self.csv_writer = csv.writer(self.csv_file)
+        # self.csv_file = open('pose_log.csv', 'a', newline='')
+        # self.csv_writer = csv.writer(self.csv_file)
         
         # Write the header only if the file is empty
-        if self.csv_file.tell() == 0:
-            self.csv_writer.writerow(['x (m)', 'y (m)', 'yaw (deg)', 'distance (m)', 'angular_error (deg)'])
+        # if self.csv_file.tell() == 0:
+        #     self.csv_writer.writerow(['x (m)', 'y (m)', 'yaw (deg)', 'distance (m)', 'angular_error (deg)'])
 
     def pose_callback(self, data):
         position = data.pose.pose.position
@@ -90,7 +90,7 @@ class RotateRobot(Node):
         yaw_degrees = (yaw_degrees + 360) % 360
 
         # Write the data to CSV file
-        self.csv_writer.writerow([f"{self.up_x:.3f}",f"{self.up_y:.3f}",f"{yaw_degrees:.3f}",])
+        # self.csv_writer.writerow([f"{self.up_x:.3f}",f"{self.up_y:.3f}",f"{yaw_degrees:.3f}",])
 
     # def stop_and_exit(self):
     #     # Stop robot and exit
