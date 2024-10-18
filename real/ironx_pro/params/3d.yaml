@@ -170,7 +170,7 @@ local_costmap:
       width: 2
       height: 2
       resolution: 0.03 #0.05
-      # robot_radius: 0.13
+      robot_radius: 0.13
       footprint: "[[-0.125, -0.1275], [-0.125, 0.1275],[0.125, 0.1275], [0.125, -0.1275]]"
       plugins: ["obstacle_layer", "voxel_layer", "inflation_layer"]
       inflation_layer:
