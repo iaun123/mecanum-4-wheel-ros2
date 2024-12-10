@@ -1,9 +1,0 @@
-#set model on gazebo
-add modles in folder .gazebo
-
-#set model in .bashrc
-export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH: add path models
-
-#solidwork
-IRON-X PRO TESR THESIS v.1
-
