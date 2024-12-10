@@ -1,12 +1,13 @@
 # Autonomous Mobile Robot Mecanum four wheels with ROS2 (MtET Thesis)
 Ubuntu 20.04.6 LTS (Focal Fossa)
 ros2 foxy
-[https://docs.ros.org/en/foxy/Installation.html]
+you can read about ros2 foxy from this link [https://docs.ros.org/en/foxy/Installation.html] and you can read about nav2 form this link [https://docs.nav2.org/].
 
 ## set model on gazebo
-add modles in folder .gazebo
+download robot model and then add models in folder .gazebo
 
 ## install
+install package for use function in ros2 if you use another version use changed foxy to your version
 ### iron_x pkg
 - sudo apt install ros-foxy-joint-state-publisher-gui 
 - sudo apt install ros-foxy-xacro
