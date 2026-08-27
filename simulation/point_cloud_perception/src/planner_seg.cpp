@@ -16,7 +16,7 @@ main ()
   pcl::ModelCoefficients::Ptr coefficients (new pcl::ModelCoefficients);
   pcl::PointIndices::Ptr inliers (new pcl::PointIndices);
 
-  std::string path="/home/iron_x/iron_x/src/point_cloud_perception/point_cloud_map/";
+  std::string path="point_cloud_map/";
   // Reading the cloud
   cloud_reader.read (path+std::string("map.pcd"),*cloud);
 

@@ -4,9 +4,9 @@ import launch_ros
 import os
 
 def generate_launch_description():
-    iron_x_share = launch_ros.substitutions.FindPackageShare(package='iron_x').find('iron_x')
-    model_path = os.path.join(iron_x_share, 'urdf/robot.urdf')
-    rviz_path = os.path.join(iron_x_share, 'rviz/basic.rviz')
+    robot_share = launch_ros.substitutions.FindPackageShare(package='robot').find('robot')
+    model_path = os.path.join(robot_share, 'urdf/robot.urdf')
+    rviz_path = os.path.join(robot_share, 'rviz/basic.rviz')
 
     robot_state_publisher_node = launch_ros.actions.Node(
         package='robot_state_publisher',

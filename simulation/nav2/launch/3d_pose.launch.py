@@ -18,7 +18,7 @@ def generate_launch_description():
     return LaunchDescription([
 
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([get_package_share_directory('iron_x'),
+            PythonLaunchDescriptionSource([get_package_share_directory("robot"),
                                         '/launch','/3d_robot.launch.py'])
         ),
 
@@ -41,5 +41,5 @@ def generate_launch_description():
     ])
 
 # ros2 run pcl_ros pcd_to_pointcloud --ros-args 
-# -p file_name:=/home/iron_x/iron_x/src/point_cloud_perception/point_cloud_map/map.pcd
+# -p file_name:=point_cloud_map/map.pcd
 # -p tf_frame:=map

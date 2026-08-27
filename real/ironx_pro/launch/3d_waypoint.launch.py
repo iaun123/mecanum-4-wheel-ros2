@@ -55,5 +55,5 @@ def generate_launch_description():
     ])
 
 # ros2 run pcl_ros pcd_to_pointcloud --ros-args 
-# -p file_name:=/home/iron_x/test/src/ironx_pro/map/mapshop/mapshop.pcd
+# -p file_name:=mapshop.pcd
 # -p tf_frame:=map

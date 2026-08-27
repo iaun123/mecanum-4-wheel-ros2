@@ -9,7 +9,7 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
   pkg_gazebo_ros = FindPackageShare(package='gazebo_ros').find('gazebo_ros')   
-  pkg_share = FindPackageShare(package='iron_x').find('iron_x')
+  pkg_share = FindPackageShare(package='robot').find('robot')
   world_file_name = 'maze.world'
   world_path = os.path.join(pkg_share, 'worlds', world_file_name)
   gazebo_models_path = os.path.join(pkg_share, 'models')

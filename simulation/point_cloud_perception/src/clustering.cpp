@@ -43,7 +43,7 @@ int main(){
     pcl::ExtractIndices<pcl::Normal>                     cylinder_indices_extractor_temp;
 
     // Cloud Loading
-    std::string path="/home/iron_x/iron_x/src/point_cloud_perception/point_cloud_map/";
+    std::string path="point_cloud_map/";
     cloud_reader.read (path+std::string("non_plane_seg.pcd"),*cloud);
 
     // Voxel filter applying

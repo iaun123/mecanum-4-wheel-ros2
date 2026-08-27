@@ -8,7 +8,7 @@ This directory contains the simulation packages for testing the 4-wheel Mecanum 
 
 | Package | Description |
 | :--- | :--- |
-| [`iron_x`](./iron_x) | Robot description (URDF/Xacro), Gazebo world spawner, and 2D/3D simulation launch files. |
+| [`robot`](./robot) | Robot description (URDF/Xacro), Gazebo world spawner, and 2D/3D simulation launch files. |
 | [`nav2`](./nav2) | Nav2 configuration, 2D goal pose navigation, and 2D/3D automated waypoint followers. |
 | [`point_cloud_perception`](./point_cloud_perception) | RTAB-Map 3D visual SLAM and Point Cloud (PCL) processing pipeline. |
 | [`joy_stick`](./joy_stick) | PS4 / DualShock joystick teleoperation node and velocity mappings. |
@@ -20,7 +20,7 @@ This directory contains the simulation packages for testing the 4-wheel Mecanum 
 
 ```bash
 # Launch robot in Gazebo simulation
-ros2 launch iron_x 2d_robot.launch.py
+ros2 launch robot 2d_robot.launch.py
 
 # Run joystick control
 ros2 launch joy_stick joystick.launch.py

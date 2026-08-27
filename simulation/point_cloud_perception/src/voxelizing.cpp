@@ -11,7 +11,7 @@ main ()
   pcl::PCDReader cloud_reader;
   pcl::PCDWriter cloud_writer;
 
-  std::string path="/home/iron_x/iron_x/src/point_cloud_perception/point_cloud_map/";
+  std::string path="point_cloud_map/";
   // Reading the cloud
   cloud_reader.read (path+std::string("map.pcd"),*cloud);
 

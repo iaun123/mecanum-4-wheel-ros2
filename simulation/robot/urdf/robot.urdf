@@ -34,14 +34,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/base_link.STL" />
+        <mesh filename="package://robot/meshes/base_link.STL" />
       </geometry>
       <material name="white" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/base_link.STL" />
+        <mesh filename="package://robot/meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -75,14 +75,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/left_front_link.STL" />
+        <mesh filename="package://robot/meshes/left_front_link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/left_front_link.STL" />
+        <mesh filename="package://robot/meshes/left_front_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -114,14 +114,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/right_front_link.STL" />
+        <mesh filename="package://robot/meshes/right_front_link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/right_front_link.STL" />
+        <mesh filename="package://robot/meshes/right_front_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -153,14 +153,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/right_back_link.STL" />
+        <mesh filename="package://robot/meshes/right_back_link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/right_back_link.STL" />
+        <mesh filename="package://robot/meshes/right_back_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -192,14 +192,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/left_back_link.STL" />
+        <mesh filename="package://robot/meshes/left_back_link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/left_back_link.STL" />
+        <mesh filename="package://robot/meshes/left_back_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -231,14 +231,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/camera_link.STL" />
+        <mesh filename="package://robot/meshes/camera_link.STL" />
       </geometry>
       <material name="grey"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/camera_link.STL" />
+        <mesh filename="package://robot/meshes/camera_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -319,14 +319,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/lidar_link.STL" />
+        <mesh filename="package://robot/meshes/lidar_link.STL" />
       </geometry>
       <material name="grey"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/lidar_link.STL" />
+        <mesh filename="package://robot/meshes/lidar_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -393,14 +393,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/imu_link.STL" />
+        <mesh filename="package://robot/meshes/imu_link.STL" />
       </geometry>
       <material name="red"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iron_x/meshes/imu_link.STL" />
+        <mesh filename="package://robot/meshes/imu_link.STL" />
       </geometry>
     </collision>
   </link>

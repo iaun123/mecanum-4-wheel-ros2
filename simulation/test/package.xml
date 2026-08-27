@@ -4,7 +4,7 @@
   <name>test</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="iron_x@todo.todo">iron_x</maintainer>
+  <maintainer email="chananyaaun123@gmail.com">iaun123</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

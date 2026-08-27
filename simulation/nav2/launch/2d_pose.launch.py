@@ -17,7 +17,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([get_package_share_directory('iron_x'),
+            PythonLaunchDescriptionSource([get_package_share_directory("robot"),
                                         '/launch','/2d_robot.launch.py'])
         ),
         

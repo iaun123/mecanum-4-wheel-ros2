@@ -95,7 +95,7 @@ graph TD
 mecanum-4-wheel-ros2/
 ├── models/                      # Gazebo world assets, 3D meshes & environment models
 ├── simulation/                  # ROS 2 Simulation Stack
-│   ├── iron_x/                  # Robot description (URDF/Xacro), Gazebo world & robot spawners
+│   ├── robot/                  # Robot description (URDF/Xacro), Gazebo world & robot spawners
 │   ├── nav2/                    # Nav2 2D/3D costmap params & waypoint navigation launch files
 │   ├── point_cloud_perception/  # RTAB-Map 3D visual SLAM & PCL filter pipelines
 │   ├── joy_stick/               # Teleop joy node integration (PS4)
@@ -162,13 +162,13 @@ source ~/.bashrc
 ### 3. Launch Simulation & Robot Spawner
 ```bash
 # Spawn robot in Gazebo world with RViz visualization
-ros2 launch iron_x 2d_robot.launch.py
+ros2 launch robot 2d_robot.launch.py
 ```
 
 ### 4. Run 2D SLAM Mapping
 ```bash
 # In a new terminal, launch SLAM Toolbox for map building
-ros2 launch iron_x slam.launch.py
+ros2 launch robot slam.launch.py
 # Or drive around using joystick teleop:
 ros2 launch joy_stick joystick.launch.py
 ```
