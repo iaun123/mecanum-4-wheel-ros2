@@ -10,7 +10,7 @@
     name="spawn_model"
     pkg="gazebo_ros"
     type="spawn_model"
-    args="-file $(find IRON-X PRO TESR THESIS v.1)/urdf/IRON-X PRO TESR THESIS v.1.urdf -urdf -model IRON-X PRO TESR THESIS v.1"
+    args="-file $(find robot_model)/urdf/robot_model.urdf -urdf -model robot_model"
     output="screen" />
   <node
     name="fake_joint_calibration"

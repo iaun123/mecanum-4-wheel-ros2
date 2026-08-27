@@ -3,7 +3,7 @@
     name="model" />
   <param
     name="robot_description"
-    textfile="$(find IRON-X PRO TESR THESIS v.1)/urdf/IRON-X PRO TESR THESIS v.1.urdf" />
+    textfile="$(find robot_model)/urdf/robot_model.urdf" />
   <node
     name="joint_state_publisher_gui"
     pkg="joint_state_publisher_gui"
@@ -16,5 +16,5 @@
     name="rviz"
     pkg="rviz"
     type="rviz"
-    args="-d $(find IRON-X PRO TESR THESIS v.1)/urdf.rviz" />
+    args="-d $(find robot_model)/urdf.rviz" />
 </launch>

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 
-project(IRON-X PRO TESR THESIS v.1)
+project(robot_model)
 
 find_package(catkin REQUIRED)
 

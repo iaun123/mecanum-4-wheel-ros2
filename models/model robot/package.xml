@@ -1,10 +1,10 @@
 <package format="2">
-  <name>IRON-X PRO TESR THESIS v.1</name>
+  <name>robot_model</name>
   <version>1.0.0</version>
   <description>
-    <p>URDF Description package for IRON-X PRO TESR THESIS v.1</p>
+    <p>URDF Description package for robot_model</p>
     <p>This package contains configuration data, 3D models and launch files
-for IRON-X PRO TESR THESIS v.1 robot</p>
+for robot_model robot</p>
   </description>
   <author>TODO</author>
   <maintainer email="TODO@email.com" />
