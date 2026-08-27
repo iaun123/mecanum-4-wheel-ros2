@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🤖 IRON-X: Autonomous 4-Wheel Mecanum Mobile Robot
+# 🤖 Autonomous 4-Wheel Mecanum Mobile Robot (ROS 2)
 
 [![ROS 2](https://img.shields.io/badge/ROS_2-Foxy_%2F_Humble_%2F_Jazzy-22314E?style=for-the-badge&logo=ros&logoColor=white)](https://docs.ros.org/)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-20.04_%2F_22.04_%2F_24.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com/)
@@ -19,7 +19,7 @@
 
 ## 📌 Overview
 
-**IRON-X / IRON-X PRO** is a full-stack robotics project developing an omnidirectional Autonomous Mobile Robot (AMR). By leveraging independent 4-wheel **Mecanum drive kinematics**, the robot achieves 3-DOF planar mobility (omnidirectional translation and rotation) suitable for tight industrial corridors and security patrolling.
+This repository provides a full-stack robotics project developing an omnidirectional **Autonomous Mobile Robot (AMR)**. By leveraging independent 4-wheel **Mecanum drive kinematics**, the robot achieves 3-DOF planar mobility (omnidirectional translation and rotation) suitable for tight industrial corridors, indoor transport, and autonomous patrolling.
 
 The project maintains **1:1 digital-twin parity** between:
 1. **Simulation (`/simulation`):** High-fidelity physics modeling in **Gazebo**, custom residential/office environments, URDF/Xacro descriptions, and virtual sensor plugins.
