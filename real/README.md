@@ -1,15 +1,16 @@
 <div align="center">
 
-# 🤖 Physical Robot Deployment (NVIDIA Jetson Nano)
+# 🤖 Physical Robot Deployment: IRON-X PRO (NVIDIA Jetson Nano)
 
 [![Jetson](https://img.shields.io/badge/Hardware-NVIDIA_Jetson_Nano-76B900?style=for-the-badge&logo=nvidia&logoColor=white)](https://developer.nvidia.com/embedded/jetson-nano)
+[![Robot](https://img.shields.io/badge/Platform-IRON--X_PRO_AMR-orange?style=for-the-badge)](https://github.com/iaun123/mecanum-4-wheel-ros2)
 [![ROS 2](https://img.shields.io/badge/ROS_2-Foxy_%2F_Humble-22314E?style=for-the-badge&logo=ros&logoColor=white)](https://docs.ros.org/)
 [![LiDAR](https://img.shields.io/badge/Sensor-2D_LiDAR-blue?style=for-the-badge)](https://www.slamtec.com/)
 [![Camera](https://img.shields.io/badge/Sensor-3D_RGB--D_Camera-green?style=for-the-badge)](https://www.intelrealsense.com/)
 [![Nav2](https://img.shields.io/badge/Stack-Nav2_Autonomous_Patrol-00599C?style=for-the-badge&logo=navigation&logoColor=white)](https://navigation.ros.org/)
 
 <p align="center">
-  <b>Production deployment configurations, sensor drivers, 2D/3D SLAM mapping, and Nav2 autonomous navigation running directly on the physical 4-Wheel Mecanum mobile robot.</b>
+  <b>Production deployment configurations, sensor drivers, 2D/3D SLAM mapping, and Nav2 autonomous navigation running directly on the physical IRON-X PRO 4-Wheel Mecanum mobile robot.</b>
 </p>
 
 </div>
@@ -18,14 +19,15 @@
 
 ## 📌 Overview
 
-This directory houses the onboard production ROS 2 packages deployed to the **NVIDIA Jetson Nano** single-board computer on the physical robot. It interfaces real-world sensors (LiDAR, 3D Depth Camera, IMU, Motor Encoders) with the ROS 2 autonomy stack to achieve real-time SLAM mapping and autonomous waypoint navigation.
+This directory houses the onboard production ROS 2 packages deployed to the **IRON-X PRO** autonomous mobile robot platform, powered by an **NVIDIA Jetson Nano** single-board computer. It interfaces real-world sensors (LiDAR, 3D Depth Camera, IMU, Motor Encoders) with the ROS 2 autonomy stack to achieve real-time SLAM mapping and autonomous waypoint navigation.
 
 ---
 
 ## 🔌 Hardware Specifications & Sensor Suite
 
 ```
-Physical Robot Architecture (Jetson Nano)
+Physical Robot Architecture (IRON-X PRO Platform)
+├── 🤖 Robot Base: IRON-X PRO 4-Wheel Mecanum Omnidirectional AMR
 ├── 🧠 Central Compute: NVIDIA Jetson Nano (ARM64, Ubuntu Linux, ROS 2)
 ├── 🚗 Drivetrain: 4x Independent DC Geared Motors with Mecanum Wheels
 ├── 📐 Sensors & Perception:
