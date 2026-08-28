@@ -29,6 +29,7 @@ install(PROGRAMS
   scripts/move_angular.py
   scripts/move_linear.py
   scripts/move_pose.py
+  scripts/teleop_keyboard.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
