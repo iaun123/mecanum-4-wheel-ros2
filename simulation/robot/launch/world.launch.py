@@ -1,61 +1,62 @@
 import os
+from ament_index_python.packages import get_package_share_directory, get_package_prefix
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
-from launch.conditions import IfCondition, UnlessCondition
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, AppendEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import Command, LaunchConfiguration, PythonExpression
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
-  pkg_gazebo_ros = FindPackageShare(package='gazebo_ros').find('gazebo_ros')   
-  pkg_share = FindPackageShare(package='robot').find('robot')
-  world_file_name = 'maze.world'
-  world_path = os.path.join(pkg_share, 'worlds', world_file_name)
-  gazebo_models_path = os.path.join(pkg_share, 'models')
-  os.environ["GAZEBO_MODEL_PATH"] = gazebo_models_path
-
-  ########### YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE ##############  
-  # Launch configuration variables specific to simulation
-  headless = LaunchConfiguration('headless')
-  use_simulator = LaunchConfiguration('use_simulator')
-  world = LaunchConfiguration('world')
-
-  declare_simulator_cmd = DeclareLaunchArgument(
-    name='headless',default_value='False',)
+    ros_gz_sim_share = get_package_share_directory("ros_gz_sim")
+    robot_dir = get_package_share_directory("robot")
+    robot_share = os.path.join(get_package_prefix("robot"), "share")
+    models_dir = os.path.join(robot_dir, "models")
     
-  declare_use_sim_time_cmd = DeclareLaunchArgument(
-    name='use_sim_time',default_value='true')
+    world_path = os.path.join(robot_dir, 'worlds', 'maze.world')
 
-  declare_use_simulator_cmd = DeclareLaunchArgument(
-    name='use_simulator',default_value='True')
-
-  declare_world_cmd = DeclareLaunchArgument(
-    name='world',default_value=world_path)
-  
-  # Start Gazebo server
-  start_gazebo_server_cmd = IncludeLaunchDescription(
-    PythonLaunchDescriptionSource(os.path.join(pkg_gazebo_ros, 'launch', 'gzserver.launch.py')),
-    condition=IfCondition(use_simulator),
-    launch_arguments={'world': world}.items())
-
-  # Start Gazebo client    
-  start_gazebo_client_cmd = IncludeLaunchDescription(
-    PythonLaunchDescriptionSource(os.path.join(pkg_gazebo_ros, 'launch', 'gzclient.launch.py')),
-    condition=IfCondition(PythonExpression([use_simulator, ' and not ', headless]))
+    gz_resource_paths = f"{robot_share}:{models_dir}:{robot_dir}"
+    set_gz_resource_path = AppendEnvironmentVariable(
+        name='GZ_SIM_RESOURCE_PATH',
+        value=gz_resource_paths
+    )
+    set_ign_resource_path = AppendEnvironmentVariable(
+        name='IGN_GAZEBO_RESOURCE_PATH',
+        value=gz_resource_paths
     )
 
-  # Create the launch description and populate
-  ld = LaunchDescription()
+    use_sim_time = LaunchConfiguration('use_sim_time')
+    world = LaunchConfiguration('world')
 
-  # Declare the launch options
-  ld.add_action(declare_simulator_cmd)
-  ld.add_action(declare_use_sim_time_cmd)
-  ld.add_action(declare_use_simulator_cmd)
-  ld.add_action(declare_world_cmd)
+    declare_use_sim_time_cmd = DeclareLaunchArgument(
+        name='use_sim_time', default_value='true'
+    )
+    declare_world_cmd = DeclareLaunchArgument(
+        name='world', default_value=world_path
+    )
 
-  # Add any actions
-  ld.add_action(start_gazebo_server_cmd)
-  ld.add_action(start_gazebo_client_cmd)
+    # Start Gazebo Sim
+    start_gazebo_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(ros_gz_sim_share, 'launch', 'gz_sim.launch.py')
+        ),
+        launch_arguments={'gz_args': ['-r ', world]}.items()
+    )
 
-  return ld
+    # Clock bridge
+    clock_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'],
+        parameters=[{'use_sim_time': use_sim_time}],
+        output='screen'
+    )
+
+    return LaunchDescription([
+        set_gz_resource_path,
+        set_ign_resource_path,
+        declare_use_sim_time_cmd,
+        declare_world_cmd,
+        start_gazebo_cmd,
+        clock_bridge,
+    ])
+

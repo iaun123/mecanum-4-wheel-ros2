@@ -261,45 +261,39 @@
   </gazebo>
 
   <gazebo reference="camera_link">
-    <sensor name="camera" type="depth">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="camera_link">
+    <sensor name="camera" type="rgbd_camera">
       <always_on>true</always_on>
       <visualize>true</visualize>
       <update_rate>20.0</update_rate>
-      <camera name="intel_realsense">
-        <horizontal_fov>0.55</horizontal_fov>
+      <topic>camera</topic>
+      <gz_frame_id>camera_rgb_frame</gz_frame_id>
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
         <image>
           <width>640</width>
           <height>480</height>
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.2</near>
-          <far>20</far>
+          <near>0.1</near>
+          <far>10.0</far>
         </clip>
+        <depth_camera>
+          <clip>
+            <near>0.1</near>
+            <far>10.0</far>
+          </clip>
+        </depth_camera>
         <noise>
           <type>gaussian</type>
           <mean>0.0</mean>
           <stddev>0.007</stddev>
         </noise>
       </camera>
-      <plugin name="depth_camera_controller" filename="libgazebo_ros_camera.so">
-        <baseline>0.2</baseline>
-        <alwaysOn>true</alwaysOn>
-        <updateRate>20.0</updateRate>
-        <frame_name>camera_rgb_frame</frame_name>
-        <pointCloudCutoff>0.5</pointCloudCutoff>
-        <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
-        <distortionK1>0</distortionK1>
-        <distortionK2>0</distortionK2>
-        <distortionK3>0</distortionK3>
-        <distortionT1>0</distortionT1>
-        <distortionT2>0</distortionT2>
-        <CxPrime>0</CxPrime>
-        <Cx>0</Cx>
-        <Cy>0</Cy>
-        <focalLength>0</focalLength>
-        <hackBaseline>0</hackBaseline>
-      </plugin>
     </sensor>
   </gazebo>
 
@@ -335,7 +329,6 @@
     <origin xyz="0.024561 2.068E-05 0.080078" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="lidar_link" />
-    <axis xyz="0 0 -1" />
   </joint>
 
   <gazebo reference="lidar_link">
@@ -343,23 +336,25 @@
   </gazebo>
 
   <gazebo reference="lidar_link">
-    <sensor name="RPlidar" type="ray">
+    <sensor name="lidar" type="gpu_lidar">
       <always_on>true</always_on>
       <visualize>true</visualize>
-      <update_rate>5</update_rate>
+      <update_rate>10</update_rate>
+      <topic>scan</topic>
+      <gz_frame_id>lidar_link</gz_frame_id>
       <ray>
         <scan>
           <horizontal>
             <samples>360</samples>
-            <resolution>1.000000</resolution>
-            <min_angle>0.000000</min_angle>
-            <max_angle>6.280000</max_angle>
+            <resolution>1.0</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
           </horizontal>
         </scan>
         <range>
-          <min>0.15</min>
+          <min>0.12</min>
           <max>12.0</max>
-          <resolution>0.015000</resolution>
+          <resolution>0.015</resolution>
         </range>
         <noise>
           <type>gaussian</type>
@@ -367,13 +362,6 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="scan" filename="libgazebo_ros_ray_sensor.so">
-        <ros>
-          <remapping>~/out:=scan</remapping>
-        </ros>
-        <output_type>sensor_msgs/LaserScan</output_type>
-        <frame_name>lidar_link</frame_name>
-      </plugin>
     </sensor>
   </gazebo>
 
@@ -418,94 +406,70 @@
 
   <gazebo reference="imu_link">
     <sensor name="imu_sensor" type="imu">
-      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-        <ros>
-          <!-- <namespace>/demo</namespace> -->
-          <remapping>~/out:=imu</remapping>
-        </ros>
-        <initial_orientation_as_reference>false</initial_orientation_as_reference>
-      </plugin>
       <always_on>true</always_on>
       <update_rate>100</update_rate>
       <visualize>true</visualize>
-      <imu>
-        <angular_velocity>
-          <x>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>2e-4</stddev>
-              <bias_mean>0.0000075</bias_mean>
-              <bias_stddev>0.0000008</bias_stddev>
-            </noise>
-          </x>
-          <y>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>2e-4</stddev>
-              <bias_mean>0.0000075</bias_mean>
-              <bias_stddev>0.0000008</bias_stddev>
-            </noise>
-          </y>
-          <z>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>2e-4</stddev>
-              <bias_mean>0.0000075</bias_mean>
-              <bias_stddev>0.0000008</bias_stddev>
-            </noise>
-          </z>
-        </angular_velocity>
-        <linear_acceleration>
-          <x>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>1.7e-2</stddev>
-              <bias_mean>0.1</bias_mean>
-              <bias_stddev>0.001</bias_stddev>
-            </noise>
-          </x>
-          <y>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>1.7e-2</stddev>
-              <bias_mean>0.1</bias_mean>
-              <bias_stddev>0.001</bias_stddev>
-            </noise>
-          </y>
-          <z>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>1.7e-2</stddev>
-              <bias_mean>0.1</bias_mean>
-              <bias_stddev>0.001</bias_stddev>
-            </noise>
-          </z>
-        </linear_acceleration>
-      </imu>
+      <topic>imu</topic>
+      <gz_frame_id>imu_link</gz_frame_id>
     </sensor>
   </gazebo>
 
-<!-- joint_state -->
+  <!-- Gazebo Physics & Friction Properties -->
+  <gazebo reference="base_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+  <gazebo reference="left_front_link">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+  </gazebo>
+  <gazebo reference="right_front_link">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+  </gazebo>
+  <gazebo reference="left_back_link">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+  </gazebo>
+  <gazebo reference="right_back_link">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+  </gazebo>
+
+  <!-- Gazebo Harmonic System Plugins -->
   <gazebo>
-    <plugin name="gazebo_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
-      <update_rate>20</update_rate>
+    <!-- Joint State Publisher Plugin -->
+    <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+      <topic>joint_states</topic>
       <joint_name>left_front_joint</joint_name>
       <joint_name>right_front_joint</joint_name>
       <joint_name>left_back_joint</joint_name>
       <joint_name>right_back_joint</joint_name>
     </plugin>
-  </gazebo>
 
-<!-- wheel -->
-  <gazebo>
-    <plugin name="mecanum_control" filename="libgazebo_ros_planar_move.so">
-      <command_topic>cmd_vel</command_topic>
-      <odometry_topic>odom</odometry_topic>
-      <odometry_frame>odom</odometry_frame>
-      <odometry_rate>20.0</odometry_rate>
-      <robot_base_frame>base_footprint</robot_base_frame>
-      <publish_odom>true</publish_odom>
-      <publish_odom_tf>true</publish_odom_tf>
+    <!-- Differential Drive / Velocity Control Plugin -->
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+      <left_joint>left_front_joint</left_joint>
+      <left_joint>left_back_joint</left_joint>
+      <right_joint>right_front_joint</right_joint>
+      <right_joint>right_back_joint</right_joint>
+      <wheel_separation>0.19</wheel_separation>
+      <wheel_radius>0.04</wheel_radius>
+      <odom_publish_frequency>20</odom_publish_frequency>
+      <topic>cmd_vel</topic>
+      <odom_topic>odom</odom_topic>
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_footprint</child_frame_id>
+    </plugin>
+
+    <!-- Sensors Plugin -->
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- IMU Plugin -->
+    <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu">
     </plugin>
   </gazebo>
+
 </robot>
