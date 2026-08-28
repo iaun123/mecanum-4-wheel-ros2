@@ -226,7 +226,7 @@ Visualization Manager:
       Value: true
     - Class: rviz_common/Group
       Displays:
-        - Alpha: 0.30000001192092896
+        - Alpha: 0.65
           Binary representation: false
           Binary threshold: 100
           Class: rviz_default_plugins/Map
@@ -350,7 +350,7 @@ Visualization Manager:
       Name: Global Planner
     - Class: rviz_common/Group
       Displays:
-        - Alpha: 0.699999988079071
+        - Alpha: 0.75
           Binary representation: false
           Binary threshold: 100
           Class: rviz_default_plugins/Map
