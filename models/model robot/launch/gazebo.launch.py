@@ -14,10 +14,15 @@ def generate_launch_description():
     default_model_path = os.path.join(pkg_share, 'urdf', 'robot.urdf')
     pkg_parent_dir = os.path.dirname(pkg_share)
 
-    # Environment variable for Gazebo Sim to find meshes (package://robot_model/...)
+    # Set Gazebo resource paths so Gazebo can resolve package://robot_model/meshes/
+    gz_resource_paths = f"{pkg_parent_dir}:{pkg_share}"
     set_gz_resource_path = AppendEnvironmentVariable(
         name='GZ_SIM_RESOURCE_PATH',
-        value=pkg_parent_dir
+        value=gz_resource_paths
+    )
+    set_ign_resource_path = AppendEnvironmentVariable(
+        name='IGN_GAZEBO_RESOURCE_PATH',
+        value=gz_resource_paths
     )
 
     # Launch arguments
@@ -42,16 +47,13 @@ def generate_launch_description():
     yaw_arg = DeclareLaunchArgument(name='yaw', default_value='0.0')
 
     # Robot description
-    robot_description = ParameterValue(
-        Command(['xacro ', LaunchConfiguration('model')]),
-        value_type=str
-    )
+    robot_description_content = Command(['xacro ', LaunchConfiguration('model')])
 
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         parameters=[{
-            'robot_description': robot_description,
+            'robot_description': ParameterValue(robot_description_content, value_type=str),
             'use_sim_time': LaunchConfiguration('use_sim_time')
         }]
     )
@@ -88,9 +90,10 @@ def generate_launch_description():
         arguments=[
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
             '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
-            '/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry',
-            '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
-            '/imu@sensor_msgs/msg/Imu@gz.msgs.IMU',
+            '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
+            '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
+            '/camera/image_raw@sensor_msgs/msg/Image[gz.msgs.Image',
+            '/imu@sensor_msgs/msg/Imu[gz.msgs.IMU',
             '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
             '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V'
         ],
@@ -100,6 +103,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         set_gz_resource_path,
+        set_ign_resource_path,
         model_arg,
         world_arg,
         use_sim_time_arg,
@@ -112,3 +116,4 @@ def generate_launch_description():
         spawn_entity,
         bridge
     ])
+
