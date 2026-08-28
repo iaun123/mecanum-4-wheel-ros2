@@ -1,4 +1,4 @@
-image: 5x5/5x5.pgm
+image: 5x5.pgm
 mode: trinary
 resolution: 0.05
 origin: [-2.97, -3.93, 0]
