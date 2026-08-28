@@ -12,7 +12,7 @@ def generate_launch_description():
     nav2_bringup_pkg = get_package_share_directory('nav2_bringup')
     robot_pkg = get_package_share_directory('robot')
 
-    default_map_file = os.path.join(nav2_pkg, 'maps', '12x12', '12x12.yaml')
+    default_map_file = os.path.join(nav2_pkg, 'maps', 'my_map', 'my_map.yaml')
     default_params_file = os.path.join(nav2_pkg, 'params', '2d.yaml')
     rviz_config_file = os.path.join(nav2_pkg, 'rviz', '2d.rviz')
 
