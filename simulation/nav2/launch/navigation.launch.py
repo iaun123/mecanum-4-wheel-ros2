@@ -12,7 +12,10 @@ def generate_launch_description():
     nav2_bringup_pkg = get_package_share_directory('nav2_bringup')
     robot_pkg = get_package_share_directory('robot')
 
-    default_map_file = os.path.join(nav2_pkg, 'maps', 'my_map', 'my_map.yaml')
+    # Default to my_map if exists, otherwise 12x12
+    my_map_path = os.path.join(nav2_pkg, 'maps', 'my_map', 'my_map.yaml')
+    default_map_file = my_map_path if os.path.exists(my_map_path) else os.path.join(nav2_pkg, 'maps', '12x12', '12x12.yaml')
+    
     default_params_file = os.path.join(nav2_pkg, 'params', '2d.yaml')
     rviz_config_file = os.path.join(nav2_pkg, 'rviz', '2d.rviz')
 
@@ -23,7 +26,7 @@ def generate_launch_description():
     sim = LaunchConfiguration('sim')
 
     declare_use_sim_time = DeclareLaunchArgument('use_sim_time', default_value='true')
-    declare_map = DeclareLaunchArgument('map', default_value=default_map_file, description='Full path to map file')
+    declare_map = DeclareLaunchArgument('map', default_value=default_map_file, description='Full path to map yaml file')
     declare_params = DeclareLaunchArgument('params_file', default_value=default_params_file, description='Nav2 params')
     declare_autostart = DeclareLaunchArgument('autostart', default_value='true', description='Autostart nav2 stack')
     declare_sim = DeclareLaunchArgument('sim', default_value='false', description='Launch simulation alongside Nav2')
@@ -34,7 +37,7 @@ def generate_launch_description():
         condition=IfCondition(sim)
     )
 
-    # Nav2 Bringup
+    # Nav2 Bringup (use_composition=False for maximum stability)
     start_nav2 = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(nav2_bringup_pkg, 'launch', 'bringup_launch.py')),
         launch_arguments={
@@ -42,6 +45,8 @@ def generate_launch_description():
             'use_sim_time': use_sim_time,
             'params_file': params_file,
             'autostart': autostart,
+            'use_composition': 'False',
+            'use_respawn': 'True',
         }.items()
     )
 
