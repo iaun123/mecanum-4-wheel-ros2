@@ -4,6 +4,27 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="robot_model">
+
+  <!-- Materials -->
+  <material name="white">
+    <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+  </material>
+  <material name="black">
+    <color rgba="0.2 0.2 0.2 1" />
+  </material>
+  <material name="grey">
+    <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+  </material>
+  <material name="red">
+    <color rgba="1.0 0.0 0.0 1" />
+  </material>
+
+  <link name="base_footprint"/>
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
   <link
     name="base_link">
     <inertial>
@@ -28,11 +49,7 @@
         <mesh
           filename="package://robot_model/meshes/base_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
+      <material name="white" />
     </visual>
     <collision>
       <origin
@@ -68,11 +85,7 @@
         <mesh
           filename="package://robot_model/meshes/left_front_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.2 0.2 0.2 1" />
-      </material>
+      <material name="black" />
     </visual>
     <collision>
       <origin
@@ -121,11 +134,7 @@
         <mesh
           filename="package://robot_model/meshes/right_front_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
+      <material name="black" />
     </visual>
     <collision>
       <origin
@@ -174,11 +183,7 @@
         <mesh
           filename="package://robot_model/meshes/right_back_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.2 0.2 0.2 1" />
-      </material>
+      <material name="black" />
     </visual>
     <collision>
       <origin
@@ -215,7 +220,7 @@
         ixx="6.58754747457331E-05"
         ixy="-7.86281708586474E-08"
         ixz="8.49525974156277E-08"
-        iyy="6.60326034401508E-05"
+        iyy="6.60326041337809E-05"
         iyz="-2.06258052484318E-07"
         izz="9.95032135393818E-05" />
     </inertial>
@@ -227,11 +232,7 @@
         <mesh
           filename="package://robot_model/meshes/left_back_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
+      <material name="black" />
     </visual>
     <collision>
       <origin
@@ -280,11 +281,7 @@
         <mesh
           filename="package://robot_model/meshes/camera_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
+      <material name="grey" />
     </visual>
     <collision>
       <origin
@@ -333,11 +330,7 @@
         <mesh
           filename="package://robot_model/meshes/lidar_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
+      <material name="grey" />
     </visual>
     <collision>
       <origin
@@ -386,11 +379,7 @@
         <mesh
           filename="package://robot_model/meshes/imu_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
+      <material name="red" />
     </visual>
     <collision>
       <origin
